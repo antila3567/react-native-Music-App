@@ -1,6 +1,6 @@
 import { rootRtkApi } from '../rootApi-RTK';
 
-type TPost = {
+interface TPost {
   tags: string[];
   _id: string;
   author: string;
@@ -10,14 +10,14 @@ type TPost = {
   createdAt: string;
   updatedAt: string;
   image: string;
-};
+}
 
-type TNewPost = {
+interface TNewPost {
   author: string;
   content: string;
   country: string;
   title: string;
-};
+}
 
 export const postsApi = rootRtkApi.injectEndpoints({
   overrideExisting: false,

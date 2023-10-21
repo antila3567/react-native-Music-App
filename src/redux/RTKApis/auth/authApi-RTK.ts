@@ -1,14 +1,14 @@
 import { rootRtkApi } from '../rootApi-RTK';
 
-type User = {
+interface User {
   login: string;
   password: string;
-};
+}
 
-type Tokens = {
+interface Tokens {
   access: string;
   refresh: string;
-};
+}
 
 export const authApi = rootRtkApi.injectEndpoints({
   endpoints: (build) => ({

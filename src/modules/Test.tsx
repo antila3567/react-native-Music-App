@@ -75,9 +75,7 @@ function Test() {
     const randomText = generateRandomText(10);
     const inpurts = { id, content: randomText };
 
-    const res = await updatePostApi(inpurts);
-
-    console.log(res);
+    await updatePostApi(inpurts);
   };
 
   const fetchPosts = async () => {
@@ -115,12 +113,12 @@ function Test() {
         >
           <Text>test updatePostApi posts</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => fetchPosts()} style={styles.addNewPostBtn}>
+        <TouchableOpacity onPress={async () => await fetchPosts()} style={styles.addNewPostBtn}>
           <Text>Fetch posts</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            addNewPost({
+          onPress={async () =>
+            await addNewPost({
               author: 'IVAN',
               content: 'Hello',
               country: 'UKRAINE',
