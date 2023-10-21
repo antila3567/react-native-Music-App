@@ -71,7 +71,7 @@ function Test() {
 
   const [deletePost, rs] = useDeletePostMutation();
 
-  const updatePost = async (id: string) => {
+  const updatePost = async (id: string): Promise<void> => {
     const randomText = generateRandomText(10);
     const inpurts = { id, content: randomText };
 
