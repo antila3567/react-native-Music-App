@@ -7,6 +7,6 @@
   "eslint.workingDirectories": ["./"],
   "prettier.eslintIntegration": true,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
