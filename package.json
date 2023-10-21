@@ -42,6 +42,15 @@
     "react-test-renderer": "18.1.0",
     "typescript": "^4.8.3"
   },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint"
+    ],
+    "**/*.{json,yaml,yml,toml}": [
+      "prettier --write"
+    ]
+  },
   "jest": {
     "preset": "react-native",
     "moduleFileExtensions": [
