@@ -1,7 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {persistReducer} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-// import {AuthState} from './types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: {
   accessToken: undefined | string;

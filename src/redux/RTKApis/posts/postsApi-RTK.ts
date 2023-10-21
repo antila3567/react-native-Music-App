@@ -1,4 +1,3 @@
-import { log } from '../../../utils/log';
 import { rootRtkApi } from '../rootApi-RTK';
 
 type TPost = {
@@ -33,8 +32,9 @@ export const postsApi = rootRtkApi.injectEndpoints({
           ]
           : [{ type: 'Posts', id: 'LIST' }],
 
-      transformResponse: (rawResult: TPost[], meta, args) => {
-        const transformArr = rawResult.filter(el => el.author === args.search);
+      transformResponse: (rawResult: TPost[]) => {
+        //meta, args
+        // const transformArr = rawResult.filter(el => el.author === args.search);
         return rawResult;
       },
     }),

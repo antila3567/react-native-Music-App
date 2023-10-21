@@ -1,12 +1,12 @@
-import {useRef, useState, useEffect} from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export function useStateHistory<T>(
     initialValue?: T | (() => T),
 ): [
-    T | undefined,
-    (state: T) => void,
-    Array<T | number | string | boolean | undefined>,
-] {
+        T | undefined,
+        (state: T) => void,
+        Array<T | number | string | boolean | undefined>,
+    ] {
     const stateHistoryRef = useRef<
         Array<T | number | string | boolean | undefined>
     >([]);

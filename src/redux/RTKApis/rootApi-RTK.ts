@@ -16,7 +16,7 @@ import { Mutex } from 'async-mutex';
 const mutex = new Mutex()
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
-  prepareHeaders: async (headers, { getState }) => {
+  prepareHeaders: async (headers) => {
     const token = await AsyncStorage.getItem('access_token');
 
     if (token) {

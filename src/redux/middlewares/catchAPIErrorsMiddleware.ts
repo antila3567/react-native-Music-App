@@ -1,10 +1,8 @@
 import { isRejectedWithValue, Middleware } from '@reduxjs/toolkit';
-import { resetStateAction } from '../resetStore';
-import { Alert } from 'react-native';
 import { log } from '../../utils/log';
 
 export const catchApiErrorsMiddleware: Middleware =
-  ({ dispatch }) =>
+  () =>
     next =>
       action => {
         if (isRejectedWithValue(action)) {
@@ -18,9 +16,8 @@ export const catchApiErrorsMiddleware: Middleware =
             originalStatusCode: action?.payload.originalStatus,
             originalStatus: action?.payload?.status,
           };
-          // log('action', action)
+
           log('=======(API ACTION ERROR)========', createErrorData);
-          //log somewhere
         }
 
         return next(action);
