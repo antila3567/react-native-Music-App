@@ -1,4 +1,4 @@
-import {rootRtkApi} from '../rootApi-RTK';
+import { rootRtkApi } from '../rootApi-RTK';
 
 type User = {
   login: string;
@@ -11,11 +11,11 @@ type Tokens = {
 };
 
 export const authApi = rootRtkApi.injectEndpoints({
-  endpoints: build => ({
+  endpoints: (build) => ({
     loginUser: build.mutation<Tokens, User>({
       query(body) {
         return {
-          url: `auth/login`,
+          url: 'auth/login',
           method: 'POST',
           body,
         };
@@ -24,4 +24,4 @@ export const authApi = rootRtkApi.injectEndpoints({
   }),
 });
 
-export const {useLoginUserMutation} = authApi;
+export const { useLoginUserMutation } = authApi;

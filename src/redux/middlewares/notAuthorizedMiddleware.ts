@@ -1,12 +1,12 @@
-import {isRejectedWithValue, Middleware} from '@reduxjs/toolkit';
-import {resetStateAction} from '../resetStore';
+import { isRejectedWithValue, Middleware } from '@reduxjs/toolkit';
+import { resetStateAction } from '../resetStore';
 
 export const unAuthenticatedMiddleware: Middleware =
-  ({dispatch}) =>
-  next =>
-  action => {
+  ({ dispatch }) =>
+  (next) =>
+  (action) => {
     if (isRejectedWithValue(action) && action.payload.status === 401) {
-      //DO logout func
+      // DO logout func
       dispatch(resetStateAction());
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -34,7 +34,7 @@ function generateRandomText(length: number) {
   return randomText;
 }
 
-const Test = () => {
+function Test() {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -61,7 +61,7 @@ const Test = () => {
 
   const [trigger, resp] = useLazyGetAllPostsByClickQuery();
 
-  const { data = [], isLoading } = useGetAllPostsQuery({ search: search });
+  const { data = [], isLoading } = useGetAllPostsQuery({ search });
 
   console.log(data.length, 'data');
 
@@ -73,7 +73,7 @@ const Test = () => {
 
   const updatePost = async (id: string) => {
     const randomText = generateRandomText(10);
-    const inpurts = { id: id, content: randomText };
+    const inpurts = { id, content: randomText };
 
     await updatePostApi(inpurts);
   };
@@ -86,10 +86,14 @@ const Test = () => {
     }
   };
 
+  useEffect(() => {
+    console.log('hello');
+  }, []);
+
   if (resp.isLoading || res.isLoading || rs.isLoading || isLoading) {
     return (
       <View style={styles.loaderView}>
-        <ActivityIndicator size={'large'} color={'green'} />
+        <ActivityIndicator size="large" color="green" />
       </View>
     );
   }
@@ -104,7 +108,7 @@ const Test = () => {
               <Text>Set clear</Text>
             </TouchableOpacity> */}
         <TouchableOpacity
-          onPress={() => setSearch(search == 'IVAN' ? 'XZ' : 'IVAN')}
+          onPress={() => setSearch(search === 'IVAN' ? 'XZ' : 'IVAN')}
           style={styles.addNewPostBtn}
         >
           <Text>test updatePostApi posts</Text>
@@ -162,7 +166,7 @@ const Test = () => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
