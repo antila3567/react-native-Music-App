@@ -4,11 +4,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.workingDirectories": [
-    "./"
-  ],
-  "prettier.eslintIntegration": true
+  "eslint.workingDirectories": ["./"],
+  "prettier.eslintIntegration": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }
-
-
-

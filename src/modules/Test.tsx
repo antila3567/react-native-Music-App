@@ -75,7 +75,9 @@ function Test() {
     const randomText = generateRandomText(10);
     const inpurts = { id, content: randomText };
 
-    await updatePostApi(inpurts);
+    const res = await updatePostApi(inpurts);
+
+    console.log(res);
   };
 
   const fetchPosts = async () => {
