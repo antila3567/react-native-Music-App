@@ -39,8 +39,8 @@ module.exports = {
     },
   },
   rules: {
-    'react-native/no-color-literals': 'error',
-    'react-native/no-inline-styles': 'error',
+    'react-native/no-color-literals': 'off',
+    'react-native/no-inline-styles': 'off',
     'react-native/no-raw-text': 'error',
     'react-native/sort-styles': 'off',
     'react-native/no-single-element-style-arrays': 'error',

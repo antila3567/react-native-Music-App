@@ -11,9 +11,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.6",
     "@react-native-async-storage/async-storage": "^1.19.3",
     "@reduxjs/toolkit": "^1.9.7",
     "async-mutex": "^0.4.0",
+    "graphql": "^16.8.1",
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-error-boundary": "^1.2.3",
