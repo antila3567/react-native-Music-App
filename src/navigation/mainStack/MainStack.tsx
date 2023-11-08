@@ -1,19 +1,36 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from '../../modules/dashboard/Dashboard';
+import colors from '../../utils/colors';
 
 const Tab = createBottomTabNavigator();
 
 const bottomRoutes = [
-  { component: Dashboard, name: 'Dashboard', label: 'Головна' },
-  { component: Dashboard, name: 'CachedMusic', label: 'Бібліотека' },
-  { component: Dashboard, name: 'Settings', label: 'Налаштування' },
+  {
+    component: Dashboard,
+    name: 'Dashboard',
+  },
+  { component: Dashboard, name: 'Settings' },
 ];
 
 const MainStack = () => {
   return (
-    <Tab.Navigator>
-      {bottomRoutes.map(({ name, component }, index) => (
-        <Tab.Screen key={index} name={name} component={component} />
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: colors.MAIN_BLACK,
+        },
+      })}
+    >
+      {bottomRoutes.map(({ name, component, navigationOptions }, index) => (
+        <Tab.Screen
+          key={index}
+          name={name}
+          component={component}
+          options={{
+            headerShown: false,
+          }}
+        />
       ))}
     </Tab.Navigator>
   );

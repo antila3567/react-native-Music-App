@@ -41,7 +41,7 @@ module.exports = {
   rules: {
     'react-native/no-color-literals': 'off',
     'react-native/no-inline-styles': 'off',
-    'react-native/no-raw-text': 'error',
+    'react-native/no-raw-text': 'off',
     'react-native/sort-styles': 'off',
     'react-native/no-single-element-style-arrays': 'error',
     '@typescript-eslint/no-unused-vars': 'error',

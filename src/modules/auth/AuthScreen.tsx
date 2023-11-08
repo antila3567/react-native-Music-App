@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import React from 'react';
 import useRenderCount from '../../hooks/useRenderCount';
 import Container from '../../common/baseComponents/Container';
-import colors from '../../utils/colors';
 import BaseText from '../../common/baseComponents/BaseText';
 import { hp } from '../../utils/sizes';
 
