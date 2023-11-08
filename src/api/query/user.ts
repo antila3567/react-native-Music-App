@@ -19,3 +19,42 @@ export const GET_USER_BY_ID = gql`
     }
   }
 `;
+
+// # query {
+// #   getAllUsers {
+// #     id, username, age
+// #   }
+// # }
+// #   query {
+// #     getUser(id: 2) {
+// #       id,
+// #       username,
+// #       age,
+
+// #     }
+// #   }
+
+// # mutation {
+// #   deleteUserById(id: 2) {
+// #     id, username, posts {
+// #       id, title, content
+// #     }
+// #   }
+// # }
+// # mutation {
+// #   createUser(input: {
+// #     username: "Jack",
+// #     age: 40,
+// #     posts:[
+// #       {
+// #         id:1,
+// #         title:"gello",
+// #         content:"test query"
+// #       }
+// #     ]
+// #   }) {
+// #     id, username, posts {
+// #       id, title, content
+// #     }
+// #   }
+// # }
