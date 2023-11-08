@@ -10,6 +10,7 @@ import colors from '../../utils/colors';
 import RecentlyPlayed from './widgets/RecentlyPlayed';
 import { lastPlayed } from '../../mock/lastPlayed';
 import RecomendedTracks from './widgets/RecomendedTracks';
+import LatestReleases from './widgets/LatestReleases';
 
 const Dashboard = () => {
   return (
@@ -19,6 +20,7 @@ const Dashboard = () => {
         <Image source={AvatarIcon} style={styles.avatar} />
       </View>
       <ScrollView>
+        <LatestReleases />
         <FollowedArtist />
         <RecentlyPlayed />
         <RecomendedTracks />
