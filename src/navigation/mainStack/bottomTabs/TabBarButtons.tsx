@@ -15,11 +15,7 @@ interface ITabBarButtons {
   props: BottomTabBarButtonProps;
 }
 
-type IconType = {
-  Dashboard: ImageSourcePropType;
-  Settings: ImageSourcePropType;
-  [key: string]: ImageSourcePropType;
-};
+type IconType = Record<string, ImageSourcePropType>;
 
 const TabBarButtons = ({ props, index, name }: ITabBarButtons) => {
   const { onPress, accessibilityState } = props;

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   lastPlayedTrackCard: {
-    marginRight: 20,
+    marginLeft: 10,
   },
   author: {
     color: colors.MAIN_GRAY,
