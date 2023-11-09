@@ -1,6 +1,4 @@
-import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import colors from '../../../../utils/colors';
+import React, { ReactNode } from 'react';
 import { width } from '../../../../utils/sizes';
 import Animated, {
   SharedValue,
@@ -9,72 +7,65 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import Color from 'color';
-import BaseText from '../../../../common/baseComponents/BaseText';
+import colors from '../../../../utils/colors';
 
 interface IDropdownListItem {
-  el: {
-    label?: string;
-    author: string;
-    name: string;
-    avatar: ImageSourcePropType;
-    isHeader?: boolean;
-  };
   index: number;
-  dropdownItemsCount: number;
+  itemsCount: number;
   isExpanded: SharedValue<boolean>;
   heightOfDropdown: SharedValue<number>;
+  children: ReactNode;
 }
 
 const DropdownListItem = ({
-  el,
   index,
-  dropdownItemsCount,
+  itemsCount,
   isExpanded,
   heightOfDropdown,
+  children,
 }: IDropdownListItem) => {
-  const DROPDOWN_WIDTH = width * 0.95;
-  const DROPDOWN_HEIGHT = 80;
-  const MARGIN_BTW_ITEMS = 10;
+  const DD_HEIGHT = 80;
+  const MARGIN = 10;
+  const MAX_HEIGHT_OF_DD = itemsCount * (DD_HEIGHT + MARGIN);
 
-  const FULL_HEIGHT_OF_DROPDOWN = dropdownItemsCount * (DROPDOWN_HEIGHT + MARGIN_BTW_ITEMS);
-
-  const positionTop = -DROPDOWN_HEIGHT;
-  const collapsedTop = FULL_HEIGHT_OF_DROPDOWN / 2 - DROPDOWN_HEIGHT;
-  const expandedTop = (DROPDOWN_HEIGHT + MARGIN_BTW_ITEMS) * index - DROPDOWN_HEIGHT;
+  const defaultTop = -DD_HEIGHT;
+  const collapsedTop = MAX_HEIGHT_OF_DD / 2 - DD_HEIGHT;
+  const expandedTop = (DD_HEIGHT + MARGIN) * index - DD_HEIGHT;
 
   const expandedScale = 1;
   const collapsedScale = 1 - index * 0.09;
-
   const isHeader = index === 0;
-  const itemsOrder = dropdownItemsCount - index;
 
-  const expandedBGC = '#181818';
+  const expandedBGC = colors.SECONDARY_GRAY;
   const collapsedBGC = Color(expandedBGC)
-    .lighten(index * 0.1)
+    .lighten(index * 0.7)
     .hex();
 
+  const limitItems = index > 4;
+
   const rStyle = useAnimatedStyle(() => {
+    const displayValue = limitItems ? 'none' : 'flex';
+    const backgroundColor = withTiming(isExpanded.value ? expandedBGC : collapsedBGC);
+    const topValue = withSpring(isExpanded.value ? expandedTop : defaultTop, {
+      damping: 15,
+    });
+    const scaleValue = withSpring(isExpanded.value ? expandedScale : collapsedScale);
+
     return {
-      backgroundColor: withTiming(isExpanded.value ? expandedBGC : collapsedBGC),
-      top: withSpring(isExpanded.value ? expandedTop : positionTop),
-      transform: [
-        {
-          scale: withSpring(isExpanded.value ? expandedScale : collapsedScale),
-        },
-        {
-          translateY: collapsedTop,
-        },
-      ],
+      display: displayValue,
+      backgroundColor,
+      top: topValue,
+      transform: [{ scale: scaleValue }, { translateY: collapsedTop }],
     };
   }, []);
 
   const manipulateWithDropdown = () => {
     if (!isHeader) return;
+    const isCollapsed = isExpanded.value;
 
-    isExpanded.value = !isExpanded.value;
-    heightOfDropdown.value = isExpanded.value
-      ? DROPDOWN_HEIGHT
-      : DROPDOWN_HEIGHT * dropdownItemsCount + MARGIN_BTW_ITEMS * 2;
+    isExpanded.value = !isCollapsed;
+    const dropdownHeight = isCollapsed ? DD_HEIGHT : DD_HEIGHT * itemsCount + MARGIN * 2;
+    heightOfDropdown.value = dropdownHeight;
   };
 
   return (
@@ -83,48 +74,18 @@ const DropdownListItem = ({
       style={[
         rStyle,
         {
-          zIndex: itemsOrder,
+          zIndex: itemsCount - index,
           position: 'absolute',
-          width: DROPDOWN_WIDTH,
-          height: DROPDOWN_HEIGHT,
+          width: width * 0.95,
+          height: 80,
           borderRadius: 10,
           justifyContent: 'center',
         },
       ]}
     >
-      {isHeader ? (
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-          }}
-        >
-          <BaseText
-            textStyle={{
-              fontWeight: '600',
-            }}
-          >
-            {el.label}
-          </BaseText>
-        </View>
-      ) : (
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-          }}
-        >
-          <Image source={el.avatar} style={{ width: 50, height: 50, borderRadius: 10 }} />
-          <BaseText>{el.name}</BaseText>
-          <BaseText>{el.author}</BaseText>
-        </View>
-      )}
+      {children}
     </Animated.View>
   );
 };
 
 export default DropdownListItem;
-
-const styles = StyleSheet.create({});

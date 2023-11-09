@@ -5,7 +5,7 @@ import Dropdown from './components/Dropdown';
 import { lastPlayed } from '../../../mock/lastPlayed';
 
 const header = {
-  label: 'Check the latest tracks',
+  label: 'Check the latest tracks 🎸',
 };
 
 const LatestReleases = () => {

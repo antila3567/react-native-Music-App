@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Container from '../../common/baseComponents/Container';
 import FollowedArtist from './widgets/FollowedArtist';
-import { followedArtists } from '../../mock/followedArtists';
 import BaseText from '../../common/baseComponents/BaseText';
 import { hp } from '../../utils/sizes';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import AvatarIcon from '../../assets/images/musicians/scott.webp';
 import colors from '../../utils/colors';
 import RecentlyPlayed from './widgets/RecentlyPlayed';
-import { lastPlayed } from '../../mock/lastPlayed';
 import RecomendedTracks from './widgets/RecomendedTracks';
 import LatestReleases from './widgets/LatestReleases';
 
