@@ -1,9 +1,10 @@
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Easing } from 'react-native';
 import React, { ReactElement, useEffect, useState } from 'react';
 import BaseText from '../../../common/baseComponents/BaseText';
 import { ImageSourcePropType } from 'react-native';
 import { hp } from '../../../utils/sizes';
 import { followedArtists } from '../../../mock/followedArtists';
+import Animated, { SlideInLeft, SlideInRight } from 'react-native-reanimated';
 
 interface IData {
   name: string;
@@ -24,10 +25,12 @@ const FollowedArtist = (): ReactElement | null => {
       <BaseText textStyle={styles.label}>Followed Artists</BaseText>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((el, i) => (
-          <TouchableOpacity key={i} style={styles.artistCard}>
-            <Image source={el.avatar} style={styles.avatar} />
-            <BaseText textStyle={styles.artistName}>{el.name}</BaseText>
-          </TouchableOpacity>
+          <Animated.View entering={SlideInRight.duration(700)} key={i}>
+            <TouchableOpacity style={styles.artistCard}>
+              <Image source={el.avatar} style={styles.avatar} />
+              <BaseText textStyle={styles.artistName}>{el.name}</BaseText>
+            </TouchableOpacity>
+          </Animated.View>
         ))}
       </ScrollView>
     </View>

@@ -2,7 +2,7 @@ import { ImageSourcePropType, StyleSheet, View } from 'react-native';
 import React from 'react';
 import DropdownListItem from './DropdownListItem';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import BaseText from '../../../../common/baseComponents/BaseText';
+import BaseText from './BaseText';
 import { Image } from 'react-native';
 
 interface IElement {

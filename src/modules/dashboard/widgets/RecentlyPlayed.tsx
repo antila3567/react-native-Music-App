@@ -4,6 +4,7 @@ import BaseText from '../../../common/baseComponents/BaseText';
 import { hp } from '../../../utils/sizes';
 import colors from '../../../utils/colors';
 import { lastPlayed } from '../../../mock/lastPlayed';
+import Animated, { SlideInRight } from 'react-native-reanimated';
 
 interface IData {
   name: string;
@@ -28,13 +29,17 @@ const RecentlyPlayed = () => {
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((el, i) => (
-          <View key={i} style={styles.lastPlayedTrackCard}>
+          <Animated.View
+            entering={SlideInRight.duration(700)}
+            key={i}
+            style={styles.lastPlayedTrackCard}
+          >
             <Image source={el.avatar} style={styles.trackImage} />
             <View>
               <BaseText textStyle={styles.trackTitle}>{el.name}</BaseText>
               <BaseText textStyle={styles.author}>{el.author}</BaseText>
             </View>
-          </View>
+          </Animated.View>
         ))}
       </ScrollView>
     </View>

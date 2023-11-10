@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import BaseText from '../../../common/baseComponents/BaseText';
-import Dropdown from './components/Dropdown';
+import Dropdown from '../../../common/baseComponents/Dropdown';
 import { lastPlayed } from '../../../mock/lastPlayed';
 
 const header = {

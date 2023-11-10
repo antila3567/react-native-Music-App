@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { width } from '../../../../utils/sizes';
 import Animated, {
   SharedValue,
   useAnimatedStyle,
@@ -7,7 +6,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import Color from 'color';
-import colors from '../../../../utils/colors';
+import { width } from '../../utils/sizes';
+import colors from '../../utils/colors';
 
 interface IDropdownListItem {
   index: number;
