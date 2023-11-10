@@ -1,10 +1,11 @@
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Dashboard from '../../modules/dashboard/Dashboard';
+import Dashboard from '../../modules/dashboard/DashboardScreen';
 import colors from '../../utils/colors';
 import TabBarButtons from './bottomTabs/TabBarButtons';
 import CircleButton from './bottomTabs/CircleButton';
 import { StyleSheet, View } from 'react-native';
 import Settings from '../../modules/settings/Settings';
+import DashboardStack from '../dashboardStack/DashboardStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,11 +13,11 @@ const MockComponent = () => null;
 
 const bottomRoutes = [
   {
-    component: Dashboard,
-    name: 'Dashboard',
+    component: DashboardStack,
+    name: 'DashboardTab',
   },
   { component: MockComponent, name: 'CentralBtn', middle: true },
-  { component: Settings, name: 'Settings' },
+  { component: Settings, name: 'SettingsTab' },
 ];
 
 const MainStack = () => {

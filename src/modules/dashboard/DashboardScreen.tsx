@@ -10,7 +10,7 @@ import RecentlyPlayed from './widgets/RecentlyPlayed';
 import RecomendedTracks from './widgets/RecomendedTracks';
 import LatestReleases from './widgets/LatestReleases';
 
-const Dashboard = () => {
+const DashboardScreen = () => {
   return (
     <Container>
       <View style={styles.headerBlock}>
@@ -27,7 +27,7 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardScreen;
 
 const styles = StyleSheet.create({
   greeting: {

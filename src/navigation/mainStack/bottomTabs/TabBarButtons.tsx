@@ -26,8 +26,8 @@ const TabBarButtons = ({ props, index, name }: ITabBarButtons) => {
 
   const getIcon = (name: string, isFocus: boolean = false): ImageSourcePropType => {
     const icons: IconType = {
-      Dashboard: isFocus ? HomeIcon : HomeIconWhite,
-      Settings: isFocus ? SettingsIcon : SettingsIconWhite,
+      DashboardTab: isFocus ? HomeIcon : HomeIconWhite,
+      SettingsTab: isFocus ? SettingsIcon : SettingsIconWhite,
     };
     return icons[name];
   };
