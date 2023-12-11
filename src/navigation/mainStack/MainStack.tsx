@@ -1,11 +1,11 @@
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Dashboard from '../../modules/dashboard/DashboardScreen';
 import colors from '../../utils/colors';
 import TabBarButtons from './bottomTabs/TabBarButtons';
 import CircleButton from './bottomTabs/CircleButton';
 import { StyleSheet, View } from 'react-native';
 import Settings from '../../modules/settings/Settings';
 import DashboardStack from '../dashboardStack/DashboardStack';
+import FallingSnow from '../../common/SnowAnimation';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,10 +34,13 @@ const MainStack = () => {
       })}
       tabBar={(props) => {
         return (
-          <View style={[styles.navigatorContainer]}>
-            <BottomTabBar {...props} />
-            <View style={[styles.xFillLine]} />
-          </View>
+          <>
+            <FallingSnow />
+            <View style={styles.navigatorContainer}>
+              <BottomTabBar {...props} />
+              <View style={styles.xFillLine} />
+            </View>
+          </>
         );
       }}
     >
