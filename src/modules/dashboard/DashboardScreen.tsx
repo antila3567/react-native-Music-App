@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../../common/baseComponents/Container';
 import FollowedArtist from './widgets/FollowedArtist';
 import BaseText from '../../common/baseComponents/BaseText';
@@ -9,10 +9,25 @@ import colors from '../../utils/colors';
 import RecentlyPlayed from './widgets/RecentlyPlayed';
 import RecomendedTracks from './widgets/RecomendedTracks';
 import LatestReleases from './widgets/LatestReleases';
+import Toast from '../../common/baseComponents/Toast';
 
 const DashboardScreen = () => {
+  const [messages, setMessages] = useState([{ id: 1, message: 'Some toast message' }]);
+
+  const removeMsg = (id: number) => {
+    setMessages((prevState) => prevState.filter((el) => el.id !== id));
+  };
+
+  const addMessage = () => {
+    setMessages((prevState) => [
+      ...prevState,
+      { id: Math.floor(Math.random() * 1000), message: 'text' },
+    ]);
+  };
+
   return (
     <Container>
+      <Toast messages={messages} removeMsg={removeMsg} />
       <View style={styles.headerBlock}>
         <BaseText textStyle={styles.greeting}>Welcome back 🌟</BaseText>
         <Image source={AvatarIcon} style={styles.avatar} />
@@ -20,7 +35,7 @@ const DashboardScreen = () => {
       <ScrollView>
         <LatestReleases />
         <FollowedArtist />
-        <RecentlyPlayed />
+        <RecentlyPlayed addMessage={addMessage} />
         <RecomendedTracks />
       </ScrollView>
     </Container>

@@ -1,4 +1,12 @@
-import { Image, ImageSourcePropType, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  ImageSourcePropType,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import BaseText from '../../../common/baseComponents/BaseText';
 import { hp } from '../../../utils/sizes';
@@ -12,7 +20,7 @@ interface IData {
   author: string;
 }
 
-const RecentlyPlayed = () => {
+const RecentlyPlayed = ({ addMessage }) => {
   const [data, setData] = useState<IData[]>([]);
 
   useEffect(() => {
@@ -34,11 +42,13 @@ const RecentlyPlayed = () => {
             key={i}
             style={styles.lastPlayedTrackCard}
           >
-            <Image source={el.avatar} style={styles.trackImage} />
-            <View>
-              <BaseText textStyle={styles.trackTitle}>{el.name}</BaseText>
-              <BaseText textStyle={styles.author}>{el.author}</BaseText>
-            </View>
+            <TouchableOpacity onPress={addMessage}>
+              <Image source={el.avatar} style={styles.trackImage} />
+              <View>
+                <BaseText textStyle={styles.trackTitle}>{el.name}</BaseText>
+                <BaseText textStyle={styles.author}>{el.author}</BaseText>
+              </View>
+            </TouchableOpacity>
           </Animated.View>
         ))}
       </ScrollView>
